@@ -1,5 +1,5 @@
-from config.settings import *
+from database.init_db import initialize_database
 
-print(APP_NAME)
-print(DB_PATH)
-print(DEBUG)
+initialize_database()
+
+print("Finance OS Started")
