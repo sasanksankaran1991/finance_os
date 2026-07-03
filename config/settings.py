@@ -1,15 +1,26 @@
 from pathlib import Path
-from dotenv import load_dotenv
 import os
 
+from dotenv import load_dotenv
+
+# Load environment variables
 load_dotenv()
 
+# Project root
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-APP_NAME = os.getenv("APP_NAME")
+# App settings
+APP_NAME = os.getenv("APP_NAME", "FinanceOS")
 
-DATABASE_NAME = os.getenv("DATABASE_NAME")
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 
-DATA_FOLDER = os.getenv("DATA_FOLDER")
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-DEBUG = os.getenv("DEBUG") == "True"
+# Database
+DATABASE_NAME = os.getenv("DATABASE_NAME", "finance.db")
+
+DATA_FOLDER = os.getenv("DATA_FOLDER", "data")
+
+DATA_DIR = BASE_DIR / DATA_FOLDER
+
+DB_PATH = DATA_DIR / DATABASE_NAME
